@@ -1,0 +1,13 @@
+class Solution {
+    public int scoreOfString(String s) {
+        int sum=0;
+        char[] c=s.toCharArray();
+        for(int i=1;i<c.length;i++)
+        {
+            int a=Math.abs((int)c[i]-(int)c[i-1]);
+            sum+=a;
+        }
+        return sum;
+    }
+
+}
