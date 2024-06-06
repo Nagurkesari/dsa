@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isNStraightHand(int[] hand, int w) {
+        if(hand.length%w!=0) return false;
+        TreeMap<Integer,Integer> t=new TreeMap<>();
+        for(int card:hand)
+        {
+            if(t.containsKey(card))
+            {
+                t.replace(card,t.get(card)+1);
+            }
+            else
+            t.put(card,1);
+        }
+        while(t.size()>0)
+        {
+            int min=t.firstKey();
+            for(int card=min;card<min+w;card++)
+            {
+                if(!t.containsKey(card)) return false;
+                int count=t.get(card);
+                if(count==1) t.remove(card);
+                else t.replace(card,t.get(card)-1);
+            }
+        }
+        return true;
+    }
+}
