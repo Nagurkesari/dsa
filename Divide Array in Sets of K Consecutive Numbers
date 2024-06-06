@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isPossibleDivide(int[] nums, int k) {
+        if(nums.length%k!=0) return false;
+        TreeMap<Integer,Integer> t=new TreeMap<>();
+         for(int n:nums)
+         {
+            if(!t.containsKey(n))
+             t.put(n,1);
+             else
+              t.replace(n,t.get(n)+1);
+         }
+        while(t.size()>0)
+        {
+            int min=t.firstKey();
+            for(int i=min;i<min+k;i++)
+            {
+                if(!t.containsKey(i)) return false;
+                int count=t.get(i);
+                if(count==1) t.remove(i);
+                else t.replace(i,count-1);
+            }
+        }
+        return true;
+    }
+}
