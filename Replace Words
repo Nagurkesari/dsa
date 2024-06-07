@@ -1,0 +1,27 @@
+class Solution {
+    public String replaceWords(List<String> dictionary, String sentence) {
+        Set<String> set=new HashSet<>(dictionary);
+        String[] words=sentence.split("\\s+");
+        StringBuilder s1=new StringBuilder();
+        for(String s:words)
+        {
+          String prefix="";
+          for(int i=1;i<=s.length();i++)
+          {
+            prefix=s.substring(0,i);
+            if(set.contains(prefix))
+             {
+                break;
+             }
+            
+            
+          } 
+           if(s1.length()>0)
+             s1.append(" ");
+             s1.append(prefix);
+          
+        }
+        
+        return s1.toString();
+    }
+}
