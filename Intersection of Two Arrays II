@@ -1,0 +1,23 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        ArrayList<Integer> a=new ArrayList<Integer>();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int f=0,l=0;
+        while(f<nums1.length && l<nums2.length)
+        {
+            if(nums1[f]==nums2[l]){
+            a.add(nums1[f]);
+            f++;l++;}
+            else if(nums1[f]<nums2[l])
+            f++;
+            else if(nums1[f]>nums2[l])
+            l++;
+        }
+        int arr[]=new int[a.size()];
+        for(l=0;l<a.size();l++)
+           arr[l]=a.get(l);
+        return arr;
+
+    }
+}
